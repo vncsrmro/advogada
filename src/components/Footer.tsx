@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
                         © {new Date().getFullYear()} Dra. Ana Costa. Todos os direitos reservados.
                     </p>
                     <p className="text-gray-600 text-sm flex items-center gap-1">
-                        Desenvolvido por <span className="text-gray-500 font-bold">ROMEIRO.DEV</span>
+                        Desenvolvido por <a href="https://inovasys.digital" target="_blank" rel="noopener noreferrer" className="text-gray-500 font-bold hover:text-gold transition-colors">InovaSys</a>
                     </p>
                 </div>
             </div>

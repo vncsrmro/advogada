@@ -40,7 +40,7 @@ const Testimonials: React.FC = () => {
                     <div className="w-24 h-1 bg-gradient-to-r from-secondary to-accent mx-auto rounded-full"></div>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-8 pb-8 md:pb-0 scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0">
                     {testimonials.map((testimonial, index) => (
                         <motion.div
                             key={index}
@@ -48,24 +48,24 @@ const Testimonials: React.FC = () => {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.2 }}
-                            className="p-8 rounded-2xl bg-white/5 border border-white/10 relative"
+                            className="min-w-[85%] md:min-w-0 snap-center p-8 rounded-sm bg-[#1A1A1A] border border-white/5 relative hover:border-gold/30 transition-colors"
                         >
                             <Quote className="absolute top-4 right-4 w-8 h-8 text-white/10" />
                             <div className="flex gap-1 mb-6">
                                 {[...Array(5)].map((_, i) => (
-                                    <Star key={i} className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                                    <Star key={i} className="w-4 h-4 text-gold fill-gold" />
                                 ))}
                             </div>
-                            <p className="text-gray-300 mb-6 italic">"{testimonial.content}"</p>
+                            <p className="text-gray-300 mb-6 italic font-light">"{testimonial.content}"</p>
                             <div className="flex items-center gap-4">
                                 <img
                                     src={testimonial.image}
                                     alt={testimonial.name}
-                                    className="w-12 h-12 rounded-full border-2 border-secondary"
+                                    className="w-12 h-12 rounded-full border-2 border-gold"
                                 />
                                 <div>
                                     <h4 className="font-bold text-white">{testimonial.name}</h4>
-                                    <p className="text-xs text-secondary">{testimonial.role}</p>
+                                    <p className="text-xs text-gold">{testimonial.role}</p>
                                 </div>
                             </div>
                         </motion.div>
