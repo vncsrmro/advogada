@@ -22,7 +22,7 @@ const differentials = [
 
 const Differentials: React.FC = () => {
     return (
-        <section className="py-20 bg-primary relative overflow-hidden">
+        <section id="differentials" className="py-20 bg-primary relative overflow-hidden">
             {/* Background Elements */}
             <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/5 to-transparent pointer-events-none"></div>
 

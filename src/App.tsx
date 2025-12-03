@@ -1,3 +1,4 @@
+import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Expertise from './components/Expertise';
@@ -10,6 +11,7 @@ import Footer from './components/Footer';
 function App() {
   return (
     <div className="bg-primary min-h-screen text-text selection:bg-secondary selection:text-primary">
+      <Navbar />
       <Hero />
       <About />
       <Expertise />

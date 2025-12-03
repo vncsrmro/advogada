@@ -4,7 +4,7 @@ import { ArrowRight, ShieldCheck } from 'lucide-react';
 
 const Hero: React.FC = () => {
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary pt-20">
+        <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary pt-20">
             {/* Background Effects */}
             <div className="absolute inset-0 z-0">
                 {/* B&W Abstract/Architectural Background */}

@@ -4,7 +4,7 @@ import { Award, BookOpen, ChevronRight } from 'lucide-react';
 
 const About: React.FC = () => {
     return (
-        <section className="py-20 relative overflow-hidden bg-primary">
+        <section id="about" className="py-20 relative overflow-hidden bg-primary">
             <div className="container mx-auto px-6 relative z-10">
                 <div className="flex flex-col lg:flex-row items-center gap-16">
 
@@ -17,11 +17,11 @@ const About: React.FC = () => {
                         className="lg:w-5/12 relative"
                     >
                         <div className="relative z-10 rounded-sm overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 group">
-                            {/* Placeholder for Professional Photo */}
+                            {/* Professional Photo */}
                             <div className="aspect-[3/4] bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center relative overflow-hidden">
-                                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')] bg-cover bg-center opacity-80 mix-blend-overlay grayscale hover:grayscale-0 transition-all duration-700"></div>
-                                <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60"></div>
-                                <span className="relative z-20 text-gray-500 font-heading text-lg tracking-widest uppercase border border-gray-600 px-4 py-2 rounded-sm">Foto Dra. Ana Costa</span>
+                                <div className="absolute inset-0 bg-[url('/images/dra-ana.png')] bg-cover bg-center opacity-90 mix-blend-normal grayscale hover:grayscale-0 transition-all duration-700"></div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-40"></div>
+                                <span className="sr-only">Foto Dra. Ana Costa</span>
                             </div>
 
                             {/* Decorative Frame */}
