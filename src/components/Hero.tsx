@@ -7,9 +7,9 @@ const Hero: React.FC = () => {
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary pt-20">
             {/* Background Effects */}
             <div className="absolute inset-0 z-0">
-                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,255,0.03),transparent_60%)]"></div>
-                <div className="absolute top-20 right-20 w-72 h-72 bg-deep-purple/20 rounded-full blur-[100px] animate-pulse"></div>
-                <div className="absolute bottom-20 left-20 w-96 h-96 bg-secondary/10 rounded-full blur-[120px] animate-pulse delay-1000"></div>
+                {/* B&W Abstract/Architectural Background */}
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-10 grayscale mix-blend-overlay"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-primary via-transparent to-primary"></div>
             </div>
 
             {/* Content */}
@@ -20,19 +20,19 @@ const Hero: React.FC = () => {
                     transition={{ duration: 0.8 }}
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8"
                 >
-                    <ShieldCheck className="w-5 h-5 text-secondary" />
-                    <span className="text-sm font-medium text-gray-300">Direito Digital & Proteção de Dados</span>
+                    <ShieldCheck className="w-5 h-5 text-gold" />
+                    <span className="text-sm font-medium text-gray-300 tracking-widest uppercase">Direito Digital & Proteção de Dados</span>
                 </motion.div>
 
                 <motion.h1
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
+                    className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-white"
                 >
                     Dra. Ana Costa <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-deep-purple">
-                        Sua Especialista em Direito Digital
+                    <span className="text-gold italic font-serif">
+                        Excelência em Direito Digital
                     </span>
                 </motion.h1>
 
@@ -40,9 +40,9 @@ const Hero: React.FC = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto"
+                    className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto font-light"
                 >
-                    Proteção de Dados (LGPD) e Consultoria Jurídica Inovadora para o Mundo Digital.
+                    Proteção de Dados (LGPD) e Consultoria Jurídica Estratégica para o Mundo Corporativo.
                 </motion.p>
 
                 <motion.div
@@ -55,37 +55,20 @@ const Hero: React.FC = () => {
                         href="https://wa.me/5519960003434"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group px-8 py-4 bg-secondary text-primary font-bold rounded-full hover:bg-white transition-all duration-300 shadow-[0_0_20px_rgba(0,255,255,0.3)] hover:shadow-[0_0_30px_rgba(0,255,255,0.5)] flex items-center gap-2"
+                        className="group px-8 py-4 bg-gold text-primary font-bold rounded-sm hover:bg-white transition-all duration-500 shadow-[0_0_20px_rgba(161,122,56,0.3)] hover:shadow-[0_0_30px_rgba(161,122,56,0.5)] flex items-center gap-2 uppercase tracking-wide text-sm"
                     >
-                        Agende sua Consulta Online
+                        Agende sua Consulta
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </a>
 
                     <a
                         href="#expertise"
-                        className="px-8 py-4 text-white border border-white/20 rounded-full hover:bg-white/5 transition-all duration-300 backdrop-blur-sm"
+                        className="px-8 py-4 text-white border border-white/20 rounded-sm hover:bg-white/5 transition-all duration-300 backdrop-blur-sm uppercase tracking-wide text-sm"
                     >
-                        Conheça Minha Especialidade
+                        Conheça Minha Expertise
                     </a>
                 </motion.div>
             </div>
-
-            {/* Floating Elements */}
-            <motion.div
-                animate={{ y: [-10, 10, -10] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-1/4 left-10 w-16 h-16 border border-white/10 rounded-xl backdrop-blur-md flex items-center justify-center hidden lg:flex"
-            >
-                <div className="w-8 h-8 bg-secondary/20 rounded-full"></div>
-            </motion.div>
-
-            <motion.div
-                animate={{ y: [10, -10, 10] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute bottom-1/4 right-10 w-20 h-20 border border-white/10 rounded-full backdrop-blur-md flex items-center justify-center hidden lg:flex"
-            >
-                <div className="w-10 h-10 bg-accent/20 rounded-full"></div>
-            </motion.div>
         </section>
     );
 };

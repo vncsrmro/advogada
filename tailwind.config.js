@@ -7,12 +7,11 @@ export default {
     theme: {
         extend: {
             colors: {
-                primary: "#0A1128", // Deep Navy
-                secondary: "#00FFFF", // Cyan (Electric Blue)
-                accent: "#5E2BFF", // Electric Purple
-                "electric-blue": "#00FFFF",
-                "deep-purple": "#8A2BE2",
-                "deep-lead": "#1A1A1A",
+                primary: "#101010", // Deep Lead
+                secondary: "#A17A38", // Gold/Bronze
+                accent: "#A17A38", // Gold/Bronze
+                "gold": "#A17A38",
+                "deep-lead": "#101010",
                 text: "#F0F0F0", // Light Gray
             },
             fontFamily: {
