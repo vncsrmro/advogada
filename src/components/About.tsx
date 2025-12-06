@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Award, BookOpen, ChevronRight, X, FileCheck, ExternalLink } from 'lucide-react';
+import { Award, BookOpen, ChevronRight, FileCheck, ChevronUp } from 'lucide-react';
 
 const certifications = [
     {
@@ -11,13 +11,13 @@ const certifications = [
     },
     {
         title: "CIPP/E - Certified Information Privacy Professional/Europe",
-        institution: "IAPP (International Association of Privacy Professionals)",
+        institution: "IAPP",
         year: "2020",
         description: "Certificação global de referência em legislação europeia de proteção de dados (GDPR)."
     },
     {
         title: "CIPM - Certified Information Privacy Manager",
-        institution: "IAPP (International Association of Privacy Professionals)",
+        institution: "IAPP",
         year: "2021",
         description: "Focada na gestão de programas de privacidade e operações de proteção de dados."
     },
@@ -26,22 +26,16 @@ const certifications = [
         institution: "Damásio Educacional",
         year: "2018",
         description: "Pós-graduação Lato Sensu em Direito Digital e Compliance."
-    },
-    {
-        title: "Membro da Comissão de Direito Digital",
-        institution: "OAB/SP",
-        year: "Atual",
-        description: "Atuação ativa em grupos de estudo e fomentaçao de boas práticas no direito eletrônico."
     }
 ];
 
 const About: React.FC = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(false);
 
     return (
         <section id="about" className="py-20 relative overflow-hidden bg-primary">
             <div className="container mx-auto px-6 relative z-10">
-                <div className="flex flex-col lg:flex-row items-center gap-16">
+                <div className="flex flex-col lg:flex-row items-start gap-16">
 
                     {/* Column 1: Visual (Photo) */}
                     <motion.div
@@ -49,7 +43,7 @@ const About: React.FC = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="lg:w-5/12 relative"
+                        className="lg:w-5/12 relative sticky top-24"
                     >
                         <div className="relative z-10 rounded-sm overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 group">
                             {/* Professional Photo */}
@@ -118,84 +112,67 @@ const About: React.FC = () => {
                             </div>
                         </div>
 
-                        <button
-                            onClick={() => setIsModalOpen(true)}
-                            className="inline-flex items-center gap-2 text-gold font-bold hover:text-white transition-colors group uppercase tracking-wide text-sm"
-                        >
-                            Ver Certificações e Experiência
-                            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </button>
+                        <div className="border border-white/10 rounded-sm overflow-hidden bg-[#1A1A1A]/50">
+                            <button
+                                onClick={() => setIsExpanded(!isExpanded)}
+                                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors group"
+                            >
+                                <span className="text-gold font-bold uppercase tracking-wide text-sm flex items-center gap-2">
+                                    Ver Certificações e Experiência
+                                </span>
+                                {isExpanded ? (
+                                    <ChevronUp className="w-5 h-5 text-gray-400 group-hover:text-gold transition-colors" />
+                                ) : (
+                                    <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-gold transition-colors" />
+                                )}
+                            </button>
+
+                            <AnimatePresence>
+                                {isExpanded && (
+                                    <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: "auto", opacity: 1 }}
+                                        exit={{ height: 0, opacity: 0 }}
+                                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                                        className="overflow-hidden"
+                                    >
+                                        <div className="p-6 pt-0 space-y-6 border-t border-white/5">
+                                            {certifications.map((cert, index) => (
+                                                <motion.div
+                                                    key={index}
+                                                    initial={{ x: -20, opacity: 0 }}
+                                                    animate={{ x: 0, opacity: 1 }}
+                                                    transition={{ delay: index * 0.1 }}
+                                                    className="flex gap-4 group/cert"
+                                                >
+                                                    <div className="shrink-0 mt-1">
+                                                        <div className="w-2 h-2 rounded-full bg-gold/50 mt-2 group-hover/cert:bg-gold transition-colors"></div>
+                                                    </div>
+                                                    <div>
+                                                        <h4 className="text-white font-bold text-base group-hover/cert:text-gold transition-colors">{cert.title}</h4>
+                                                        <p className="text-gray-400 text-sm">{cert.institution} <span className="text-white/20">•</span> {cert.year}</p>
+                                                    </div>
+                                                </motion.div>
+                                            ))}
+
+                                            <div className="pt-4 mt-4">
+                                                <a
+                                                    href="https://www.linkedin.com"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-xs text-gray-500 hover:text-gold transition-colors flex items-center gap-1"
+                                                >
+                                                    Ver currículo completo no LinkedIn <ChevronRight className="w-3 h-3" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
                     </motion.div>
                 </div>
             </div>
-
-            {/* Certifications Modal */}
-            <AnimatePresence>
-                {isModalOpen && (
-                    <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            onClick={() => setIsModalOpen(false)}
-                            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
-                        ></motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                            className="relative w-full max-w-2xl bg-[#1A1A1A] border border-white/10 rounded-sm shadow-2xl overflow-hidden max-h-[85vh] flex flex-col"
-                        >
-                            <div className="flex items-center justify-between p-6 border-b border-white/5 bg-[#101010]">
-                                <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                                    <Award className="w-5 h-5 text-gold" />
-                                    Certificações e Títulos
-                                </h3>
-                                <button
-                                    onClick={() => setIsModalOpen(false)}
-                                    className="text-gray-400 hover:text-white transition-colors"
-                                >
-                                    <X className="w-6 h-6" />
-                                </button>
-                            </div>
-
-                            <div className="p-6 overflow-y-auto custom-scrollbar">
-                                <div className="space-y-6">
-                                    {certifications.map((cert, index) => (
-                                        <div key={index} className="flex gap-4 group">
-                                            <div className="shrink-0 mt-1">
-                                                <div className="w-8 h-8 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center text-gold group-hover:scale-110 transition-transform">
-                                                    <FileCheck className="w-4 h-4" />
-                                                </div>
-                                            </div>
-                                            <div className="flex-1">
-                                                <h4 className="text-white font-bold text-lg mb-1 group-hover:text-gold transition-colors">{cert.title}</h4>
-                                                <p className="text-gray-400 text-sm mb-2 font-medium">{cert.institution} • {cert.year}</p>
-                                                <p className="text-gray-500 text-sm font-light leading-relaxed">{cert.description}</p>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <div className="mt-8 pt-6 border-t border-white/5 text-center">
-                                    <p className="text-gray-500 text-sm italic mb-4">
-                                        "A atualização constante é um dever do advogado na era digital."
-                                    </p>
-                                    <a
-                                        href="https://www.linkedin.com"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 text-gold text-sm font-bold hover:underline"
-                                    >
-                                        Ver perfil completo no LinkedIn <ExternalLink className="w-3 h-3" />
-                                    </a>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </div>
-                )}
-            </AnimatePresence>
         </section>
     );
 };
